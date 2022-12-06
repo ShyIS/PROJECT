@@ -39,6 +39,11 @@ function displayWeatherCondition(response) {
     response.data.main.humidity
   );
   document.querySelector("#desc").innerHTML = response.data.weather[0].main;
+  let iconElement = document.querySelector("#icon");
+  iconElement.setAttribute(
+    "src",
+    `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
+  );
 }
 function searchCity(city) {
   // event.preventDefault();
@@ -58,7 +63,6 @@ form.addEventListener("submit", handleForm);
 function searchLocation(position) {
   let apiKey = "13dced56061d92fe4b5409145f02a578";
   let apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${position.coords.latitude}&lon=${position.coords.longitude}&appid=${apiKey}&units=metric`;
-  console.log(apiUrl);
 
   axios.get(apiUrl).then(displayWeatherCondition);
 }
