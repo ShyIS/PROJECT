@@ -44,7 +44,9 @@ function displayWeatherCondition(response) {
     "src",
     `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
   );
+  celTemp = response.data.main.temp;
 }
+
 function searchCity(city) {
   // event.preventDefault();
   let apiKey = "13dced56061d92fe4b5409145f02a578";
@@ -75,3 +77,15 @@ let currentLocation = document.querySelector("#current-location");
 currentLocation.addEventListener("click", getCurrentLocation);
 
 searchCity("Miami");
+
+function displayFarTemp(event) {
+  event.preventDefault();
+  let tempElement = document.querySelector("#temp");
+  let farTemp = (celTemp * 9) / 5 + 32;
+  tempElement.innerHTML = Math.round(farTemp);
+}
+
+let farLink = document.querySelector("#far-link");
+farLink.addEventListener("click", displayFarTemp);
+
+let cellTemp = null;
