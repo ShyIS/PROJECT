@@ -88,4 +88,11 @@ function displayFarTemp(event) {
 let farLink = document.querySelector("#far-link");
 farLink.addEventListener("click", displayFarTemp);
 
-let cellTemp = null;
+function displayCelTemp(event) {
+  event.preventDefault();
+  let tempElement = document.querySelector("#temp");
+  tempElement.innerHTML = Math.round(celTemp);
+}
+
+let celLink = document.querySelector("#cel-link");
+celLink.addEventListener("click", displayCelTemp);
