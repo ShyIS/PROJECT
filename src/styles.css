@@ -17,10 +17,23 @@ h1 {
   font-family: "Roboto", sans-serif;
 }
 .temp {
-  font-size: 30px;
+  font-size: 40px;
 }
+
+.units .active {
+  text-decoration: none;
+  color: black;
+  cursor: default;
+}
+
+.units .active:hover {
+  text-decoration: none;
+}
+
 .units {
   font-size: 15px;
+  position: absolute;
+  text-align: right;
 }
 
 li {

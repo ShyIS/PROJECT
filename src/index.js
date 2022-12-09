@@ -81,6 +81,9 @@ searchCity("Miami");
 function displayFarTemp(event) {
   event.preventDefault();
   let tempElement = document.querySelector("#temp");
+  // remove the active class from the cel link
+  celLink.classList.remove("active");
+  farLink.classList.add("active");
   let farTemp = (celTemp * 9) / 5 + 32;
   tempElement.innerHTML = Math.round(farTemp);
 }
@@ -91,6 +94,8 @@ farLink.addEventListener("click", displayFarTemp);
 function displayCelTemp(event) {
   event.preventDefault();
   let tempElement = document.querySelector("#temp");
+  celLink.classList.add("active");
+  farLink.classList.remove("active");
   tempElement.innerHTML = Math.round(celTemp);
 }
 
