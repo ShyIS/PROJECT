@@ -101,3 +101,5 @@ function displayCelTemp(event) {
 
 let celLink = document.querySelector("#cel-link");
 celLink.addEventListener("click", displayCelTemp);
+
+dispalyForecast();

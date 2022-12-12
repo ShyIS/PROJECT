@@ -36,9 +36,6 @@ h1 {
   text-align: right;
 }
 
-li {
-  list-style: none;
-}
 .head3 {
   font-family: "Source Code Pro", monospace;
   padding: 10px 0px 15px 0px;
@@ -52,11 +49,4 @@ li {
   border-radius: 300px;
   max-width: 90%;
   font-family: "Source Code Pro", monospace;
-}
-
-.week {
-  margin: 0 auto;
-  max-width: 80%;
-  font-family: "Source Code Pro", monospace;
-  display: block;
 }
