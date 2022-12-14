@@ -22,6 +22,33 @@ function formatDate(date) {
   return `${day} ${hours}:${minutes}`;
 }
 
+function displayForecast() {
+  let forecastElement = document.querySelector("#forecast");
+
+  let forecastHTML = `<div class="row">`;
+  let days = ["Tue", "Wed", "Thur", "Fri", "Sat", "Sun"];
+  days.forEach(function (day) {
+    forecastHTML =
+      forecastHTML +
+      `
+    <div class="col-2">
+             <div class="weather-forecast-date">${day}</div>
+             <img
+               src="http://openweathermap.org/img/wn/50d@2x.png"
+               alt=""
+               width="42"
+             />
+             <div class="weather-forecast-temperatures">
+               <span class="weather-forecast-temperature-max"> 18° </span>
+               <span class="weather-forecast-temperature-min"> 12° </span>
+             </div>
+         </div>
+        `;
+  });
+  forecastHTML = forecastHTML + `</div>`;
+  forecastElement.innerHTML = forecastHTML;
+}
+
 let dateElement = document.querySelector("#date");
 let currentTime = new Date();
 dateElement.innerHTML = formatDate(currentTime);
@@ -78,10 +105,11 @@ currentLocation.addEventListener("click", getCurrentLocation);
 
 searchCity("Miami");
 
+displayForecast();
+
 function displayFarTemp(event) {
   event.preventDefault();
   let tempElement = document.querySelector("#temp");
-  // remove the active class from the cel link
   celLink.classList.remove("active");
   farLink.classList.add("active");
   let farTemp = (celTemp * 9) / 5 + 32;
@@ -101,5 +129,3 @@ function displayCelTemp(event) {
 
 let celLink = document.querySelector("#cel-link");
 celLink.addEventListener("click", displayCelTemp);
-
-dispalyForecast();
