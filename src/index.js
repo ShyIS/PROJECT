@@ -134,26 +134,3 @@ currentLocation.addEventListener("click", getCurrentLocation);
 searchCity("Miami");
 
 displayForecast();
-
-function displayFarTemp(event) {
-  event.preventDefault();
-  let tempElement = document.querySelector("#temp");
-  celLink.classList.remove("active");
-  farLink.classList.add("active");
-  let farTemp = (celTemp * 9) / 5 + 32;
-  tempElement.innerHTML = Math.round(farTemp);
-}
-
-let farLink = document.querySelector("#far-link");
-farLink.addEventListener("click", displayFarTemp);
-
-function displayCelTemp(event) {
-  event.preventDefault();
-  let tempElement = document.querySelector("#temp");
-  celLink.classList.add("active");
-  farLink.classList.remove("active");
-  tempElement.innerHTML = Math.round(celTemp);
-}
-
-let celLink = document.querySelector("#cel-link");
-celLink.addEventListener("click", displayCelTemp);
