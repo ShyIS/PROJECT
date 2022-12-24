@@ -22,11 +22,11 @@ function formatDate(date) {
   return `${day} ${hours}:${minutes}`;
 }
 
-function displayForecast() {
+function displayForecast(response) {
   let forecastElement = document.querySelector("#forecast");
 
   let forecastHTML = `<div class="row">`;
-  let days = ["Tue", "Wed", "Thur", "Fri", "Sat", "Sun"];
+  let days = ["Wed", "Wed", "Thur", "Fri", "Sat", "Sun"];
   days.forEach(function (day) {
     forecastHTML =
       forecastHTML +
@@ -54,7 +54,6 @@ let currentTime = new Date();
 dateElement.innerHTML = formatDate(currentTime);
 
 function displayWeatherCondition(response) {
-  console.log(response.data);
   document.querySelector("#city").innerHTML = response.data.name;
   document.querySelector("#temp").innerHTML = Math.round(
     response.data.main.temp
@@ -72,11 +71,19 @@ function displayWeatherCondition(response) {
     `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
   );
   celTemp = response.data.main.temp;
+  getForecast(response.data.coord);
+}
+
+function getForecast(coordinates) {
+  console.log(coordinates);
+  let apiKey = "842b36d55cb28eba74a018029d56b04c";
+  let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${apiKey}&units=metric`;
+  console.log(apiUrl);
 }
 
 function searchCity(city) {
   // event.preventDefault();
-  let apiKey = "13dced56061d92fe4b5409145f02a578";
+  let apiKey = "842b36d55cb28eba74a018029d56b04c";
   let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
   axios.get(apiUrl).then(displayWeatherCondition);
 }
@@ -90,7 +97,7 @@ let form = document.querySelector("#search-form");
 form.addEventListener("submit", handleForm);
 
 function searchLocation(position) {
-  let apiKey = "13dced56061d92fe4b5409145f02a578";
+  let apiKey = "842b36d55cb28eba74a018029d56b04c";
   let apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${position.coords.latitude}&lon=${position.coords.longitude}&appid=${apiKey}&units=metric`;
 
   axios.get(apiUrl).then(displayWeatherCondition);
